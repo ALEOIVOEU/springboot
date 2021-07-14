@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+hello sprinboot
+<form action="getHello" method="post">
+    用名:<input id="username" type="text" name="username"><br>
+    密码:<input id="password" type="password" name="password"><br>
+    <input type="button" value="提交">
+</form>
+<input type="button" value="ajax 请求" id="btn">
+</body>
+</html>
+<script type="text/javascript">
+    $("#btn").click(function(){
+        $.ajax({
+            url:'getHello',
+            data:{username:$("username").val(),password:$("password").val()},
+            method:'post',
+            dataType:'json', // 响应数据类型  格式
+            success:function(resp){
+                console.log(resp);
+            }
+
+        })
+    });
+</script>
